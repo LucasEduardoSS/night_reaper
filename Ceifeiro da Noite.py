@@ -11,7 +11,7 @@ def ataque_inimigo():
     elif inimigo["Nome"] == "Hollow":
         danos = [randint(15, 25), randint(25, 40), randint(55, 70)]
 
-    # Calcula e atribui o valor de dano ao ataque do inimigp
+    # Calcula e atribui o valor de dano ao ataque do inimigo
     damage_ini = {"Ataque": choice(inimigo["Ataques"]).copy()}
     damage_ini["Dano"] = danos[damage_ini["Ataque"]["cod"]]
     damage_ini["Dano"] -= damage_ini["Dano"] * (jogador["Defesa"] / 100)
@@ -36,6 +36,7 @@ def defesa(x):
     if x == 3:
         ataque(1)
     jogador["Defesa"] = 15
+    return None
 
 
 # Função de Ataque
