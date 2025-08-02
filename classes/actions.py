@@ -1,24 +1,25 @@
 
-class Attack:
-    def __init__(self, desc, damage, piercing):
+
+class Action:
+    def __init__(self, desc, velocity, **kwargs):
         self.desc: str = desc
+        self.velocity: float = velocity | 100.00
+
+
+class Attack(Action):
+    def __init__(self, damage, piercing, **kwargs):
+        super().__init__(**kwargs)
         self.damage: float = damage
         self.piercing: float = piercing
 
 
-class Defense:
-    def __init__(self, desc, ratio, stamina_consumption):
-        self.desc: str = desc
+class Defense(Action):
+    def __init__(self, ratio, stamina_consumption, **kwargs):
+        super().__init__(**kwargs)
         self.ratio: float = ratio
         self.stamina_consumption: float = stamina_consumption
 
 
-class Movement:
-    def __init__(self, desc, velocity):
-        self.desc: str = desc
-        self.velocity: float = velocity
-
-
-class Jump(Movement):
-    def __init__(self, desc, velocity):
-        super().__init__(desc, velocity)
+class Jump(Action):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
